@@ -1,0 +1,35 @@
+body
+    {
+        margin: 0%;
+        background-color: var(--azul);    
+    }
+
+.cabecalho
+    {
+        padding: 2%;
+        
+    }
+
+.cabecalho__menu
+    {
+        display: flex;
+        gap: 50px;   
+        justify-content: center;    
+    }
+
+.cabecalho__menu__link
+    {
+        width: 180px;        
+        text-align: center;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        color: #326589;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+.cabecalho__menu__link:hover
+    {
+        transform: scale(1.1);        
+    }

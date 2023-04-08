@@ -1,0 +1,40 @@
+.apresentacao__logotipo
+    {
+        display: flex;
+        padding: 2% 0 0 20%;
+        background-color: var(--azul);
+    }
+
+.apresentacao__logo
+    {        
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        font-weight: 600;
+        padding: 0 0 2% 0;
+        color: white;
+    }
+
+.imagem__logo
+    {        
+        width: 60px;
+        height: 60px;
+    }
+
+.h1__logo
+    {
+        margin: 0;
+    }
+
+.paragrafo__logo 
+    {
+        margin: 0;
+        font-size: 24px;
+    }
+
+.hr
+    {
+        width: 60%;
+        margin: 0 0 0 20%;        
+    }

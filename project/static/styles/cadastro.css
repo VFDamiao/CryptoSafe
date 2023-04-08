@@ -1,0 +1,69 @@
+.cabeçalho__usuario
+    {
+        background-color: var(--cor-de-fundo)
+    }
+
+.cabeçalho__logo 
+    {
+        display: flex;
+        width: 30%;
+        margin: 5em auto;    
+        border-radius: 20px
+    }
+
+.form-signin
+    {
+        display: flex;
+        text-align: center;
+    }
+
+
+
+.lista-menu__titulo, .lista-menu__item
+    {
+        padding: 1em;
+        background-color: var(--cinza-claro);
+    }
+
+.panel-default
+    {
+        background: var(--branco);
+        font-family: var(--fonte-principal);
+        font-size: 0.8em; 
+        font-weight: 500;
+        box-shadow: 0px 4px 4px rgba(199, 59, 59, 0.25);
+        border-radius: 10px;
+        margin: 0 0 2% 40%;
+        padding: 1em;   
+        text-decoration: none;        
+        width: 20%;
+        
+    }
+
+.panel-default legend
+    {
+        font-family: var(--fonte-principal);
+        font-size: 1.5em; 
+        font-weight: 700;
+    }
+
+.form-horizontal
+    {
+        justify-content: center;
+        align-items: center;
+    }
+
+.gravar         
+    {
+       width: 40%; 
+       padding: 1em;
+       margin: 1em 0 0 30%;
+       background: orange;
+       color: white;
+       font-weight: bold;
+       font-size: 18px;
+       border: none;
+       border-radius: 5px;
+       transition: 1s all;
+       cursor: pointer;       
+    }

@@ -1,0 +1,70 @@
+.apresentacao
+    {
+        display: flex;
+        padding: 2% 0 0 30%;
+        align-items: center;
+        background-color: var(--cinza-claro);
+        gap: 100px;
+        
+    }
+
+.apresentacao__conteudo
+    {   
+        display: flex;
+        flex-direction: column;       
+    }
+
+.apresentacao__titulo
+    {
+        font-family: 'Changa One', cursive;
+        font-size: 30px;
+        font-weight: 400;    
+        margin: 0.25em;    
+    }
+
+.apresentacao__titulo2
+    {
+        font-family: 'Changa One', cursive;
+        font-size: 30px;
+        font-weight: 400; 
+        color: white;
+        margin: 0.25em; 
+    }
+
+.apresentacao__imagem
+    {
+        width: 35%;
+        height: 35%;
+
+    }
+
+.apresentacao__segundo 
+    {
+        display: flex;
+        padding: 2% 0 0 30%;
+        font-size: 1em;        
+        text-align: center;
+        font-weight: 700;  
+        background-color: var(--cinza-claro);
+    }
+
+.apresentacao__segundo2 
+    {
+        text-align: justify;          
+    }
+
+.apresentacao__segundo3
+    {
+        text-align: justify;        
+        border-left: 1px solid var(--cinza-claro);   
+    }
+
+.solid
+    {
+        border-left: 1px solid var(--preto);
+        
+       
+        left: 50%;
+        margin: 0 30px 0 30px;
+        top: 0;
+    }

@@ -1,7 +1,77 @@
-<html>
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    
+    <title>Crypto-Safe</title>
+</head>
 <body>
+    <header class="cabecalho">
+            <div class="cabecalho__menu">                
+                <!-- <a class="cabecalho__menu__link" href="index.html">Página Inicial</a> -->
+                <a class="cabecalho__menu__link" href="/login">Entrar</a>
+                <a class="cabecalho__menu__link" href="/register">Novo Cadastro</a>               
+            </div> 
 
-<h1>Home</h1>
+            <section class="apresentacao__logotipo">
+                <div class="apresentacao__logo">
+                <h1 class="h1__logo">
+                    <img class="imagem__logo" src="{% static 'assets/cadeado.png' %}" alt="cadealo logo">
+                    Crypto-Safe
+                </h1>
+                <p class="paragrafo__logo">Suas Senhas seguras.</p>
+            </div>
+            </section>
+            <hr class="hr">
+    </header>
 
+    <main class="apresentacao">
+        
+       
+        <section class="apresentacao__conteudo">
+            <h1 class="apresentacao__titulo">Organize</h1>
+            <h1 class="apresentacao__titulo">Salve</h1>
+            <h1 class="apresentacao__titulo">Criptografe</h1>
+            <h1 class="apresentacao__titulo2">Suas Senhas</h1>
+            <h1 class="apresentacao__titulo2">para um ambiente</h1>
+            <h1 class="apresentacao__titulo2">mais seguro</h1>             
+        </section>
+            <img class="apresentacao__imagem" src="{% static 'assets/Debate.png' %}" alt="imagemdebate">
+            
+               
+           
+    </main>
+    <section class="apresentacao__segundo">   
+        <div class="apresentacao__conteudo2">
+            
+                <img src="{% static 'assets/nuvem.png' %}" alt="Computação em Nuvem">
+                <h2>Computação em Nuvem</h2>               
+                <p>Armazenados e Criptografados suas senhas em nuvem</p>
+            </div>
+
+            <vl class="solid"></vl>
+
+            <div class="apresentacao__conteudo3">
+                <img src="{% static 'assets/computador.png' %}" alt="Computação em Nuvem">
+                <h2>Segurança</h2>  
+                <p>Apenas você tera acesso ao banco de dados das suas senhas de bancos,</p>
+                <p>redes sociais, aplicativos entre outros</p>                                  
+            </div>
+    </section>   
+
+    <footer class="rodape">
+        <section class="rodape__menu">
+            <a class="rodape__link" href="">Sobre a empresa</a>
+            <a class="rodape__link" href="">Suporte</a>
+            <a class="rodape__link" href="">
+                <img class="img" src="{% static 'assets/icons8-twitter.svg' %}" alt="logotipo_twitter">     
+                Siga-nos no Twitter
+            </a>
+        </section>
+    </footer>
 </body>
-</html
+</html>

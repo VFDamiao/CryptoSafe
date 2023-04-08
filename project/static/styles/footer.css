@@ -1,0 +1,33 @@
+.rodape
+    {
+        background-color: var(--cinza-claro);
+        
+       
+    }
+
+.rodape__menu
+    {
+        display: flex;
+        padding: 2%;
+        gap: 15%;
+        justify-content: center;      
+        align-items: center;
+    }
+
+.rodape__link
+    {
+        
+        padding: 10px;
+        display: flex;
+        font-size: 20px;
+        font-weight: 400;
+        text-decoration: none;
+        color: black;      
+        gap: 10px;        
+    }
+
+.img
+    {
+        width: 30px;
+        height: 30px;
+    }
