@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-    <title>Login-Crypto-Safe</title>
+    <title>Cadastro-Crypto-Safe</title>
 </head>
 <body>
     <header class="cabecalho">
         <div class="cabecalho__menu">                
             <!-- <a class="cabecalho__menu__link" href="index.html">Página Inicial</a> -->
             <a class="cabecalho__menu__link" href="/">Página Inicial</a>
-            <a class="cabecalho__menu__link" href="/accounts/register">Novo Cadastro</a>               
+            <a class="cabecalho__menu__link" href="/accounts/login">Login</a>               
         </div> 
 
         <section class="apresentacao__logotipo">
@@ -30,33 +30,50 @@
     <main>
         <div class="panel-default">
             <div class="panel-heading">
-                <h3 class="login">LOGIN</h3>
+                <h3 class="panel-title text-center">CADASTRO DE CLIENTE</h3>
             </div>
-                <form method="post">
+            
+            <div class="panel-body">
+                
+                <form method="post" class="form-horizontal">
                     {% csrf_token %}
 
                     <input type="hidden" name="next" value="{{ next }}">
 
                     <fieldset>
-                        <legend class="login__user">Usuario e Senha</legend>
+                        <legend>Usuario e Senha</legend>
                         <hr></hr>
                         <div class="form-group">
                             <label for="usuario" class="col-sm-2 control-label">Usuario</label>
                             <div class="col-sm-4">
-                                <input type="usuario" name="username" class="form-control" id="usuario" required placeholder="nome de usuario aqui">
+                                <input type="text" name="username" class="form-control" id="usuario" required placeholder="nome de usuario aqui">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usuario" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-4">
+                                <input type="email" name="email" class="form-control" id="usuario" required placeholder="nome de usuario aqui">
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <label for="senha" class="col-sm-2 control-label">Senha</label>
                             <div class="col-sm-4">
-                                <input type="password" name="password" class="form-control" id="senha" required placeholder="**********" >
+                                <input type="password" name="password1" class="form-control" id="senha" required placeholder="**********" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senha" class="col-sm-2 control-label">Confirme sua senha</label>
+                            <div class="col-sm-4">
+                                <input type="password" name="password2" class="form-control" id="senha" required placeholder="**********" >
                             </div>
                         </div>
                     </fieldset>
                     
-                    <button type="submit" class="botao__login" onclick="logar();" value="Gravar" required>
-                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Logar
+                    <button type="submit" class="gravar" value="Gravar" required>
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Cadastrar
                     </button>
                 </form>
             </div>
