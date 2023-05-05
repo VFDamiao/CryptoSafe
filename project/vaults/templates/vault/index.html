@@ -1,10 +1,45 @@
+{% load static %}
 <html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/vault.css' %}">
+    <title>Vault</title>
+</head>
+
 <body>
+    <nav class="navbar">
+        <h2>Crypto Safe</h2>
+        <ul>
+            <li><a href="#">Confres</a></li>
+            <li><a href="#">Meu perfil</a></li>
+            <li><a href="/accounts/logout">sair</a></li>
+        </ul>
+    </nav>
+        
+    <h1>Cofre</h1>
+    <p style="font-size: 18px;">Olá {{ user.username }} bem vindo(a) ao seu cofre!</p>
 
-<h1>Cofre</h1>
-<p style="font-size: 18px;">Olá {{ user.username }} bem vindo(a) ao seu cofre!</p>
 
-<a href="/accounts/logout">Sair</a>
+    <form method="post" action="{% url 'create_vault' %}">
+        {% csrf_token %}
+        <label for="name">Nome:</label>
+        <input type="text" name="name" required>
+        <br>
+        <label for="description">Descrição:</label>
+        <input type="text" name="description" required>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    {% for vault in vaults %}
+        <div>
+            <h2>{{ vault.name }}</h2>
+            <p>{{ vault.description }}</p>
+            <a href="{% url 'delete_vault' vault.id %}">Excluir</a>
+        </div>
+    {% endfor %}
 
 </body>
 </html
