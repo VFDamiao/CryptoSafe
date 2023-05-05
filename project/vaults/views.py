@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, get_object_or_404
 
 from .models import Vault
 
@@ -16,18 +17,38 @@ def vault(request):
 def create_vault(request):
 
   if request.method == 'POST':
-      name = request.POST.get('name')
-      description = request.POST.get('description')
-      user_id = request.user.id
+    name = request.POST.get('name')
+    description = request.POST.get('description')
+    user_id = request.user.id
 
-      exemplo = Vault(name=name, description=description, user_id=user_id)
-      exemplo.save()
-      
-      return redirect('vault')
+    vault = Vault(name=name, description=description, user_id=user_id)
+    vault.save()
+    
+    return redirect('vault')
   else:
-      return redirect('vault')
+    return redirect('vault')
 
+@login_required
 def delete_vault(request, vault_id):
   vault = Vault.objects.get(id=vault_id)
   vault.delete()
   return redirect('vault')
+
+
+@login_required
+def edit_vault(request, vault_id):
+  vault = Vault.objects.get(id=vault_id)
+  return render(request, 'vault/edit.html', {'vault': vault})
+
+
+@login_required
+def update_vault(request, vault_id):
+  vault = get_object_or_404(Vault, id=vault_id)
+
+  if request.method == 'POST':
+    vault.name = request.POST.get('name')
+    vault.description = request.POST.get('description')
+    vault.save()
+    return redirect('edit_vault', vault_id=vault_id)
+  else:
+    return redirect('edit_vault', vault_id=vault_id)

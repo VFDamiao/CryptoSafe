@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+
+        <link href="{% static 'styles/vault.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        {% block content %}
+        <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 border rounded p-3">
+            <form method="POST" action="{% url 'update_vault' vault_id=vault.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="name">Nome do cofre</label>
+                <input type="text" class="form-control" name="name" value="{{ vault.name }}">
+                </div>
+                <div class="form-group">
+                <label for="description">Descrição</label>
+                <input type="text" class="form-control" name="description" value="{{ vault.description }}">
+                </div>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Salvar</button>
+            </form>
+            </div>
+        </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>
