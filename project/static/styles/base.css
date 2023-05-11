@@ -1,0 +1,17 @@
+.navbar-text a {
+    color: #000;
+}
+
+.navbar-text a:hover {
+    color: #175ddc;
+}
+
+.navbar-button a:hover {
+    color: black;
+    background-color: #175ddc;
+}
+
+.main-navbar {
+    font-family: 'Share Tech Mono', monospace;
+    margin-bottom: 3rem;
+}

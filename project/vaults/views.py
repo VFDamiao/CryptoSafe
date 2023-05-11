@@ -49,6 +49,6 @@ def update_vault(request, vault_id):
     vault.name = request.POST.get('name')
     vault.description = request.POST.get('description')
     vault.save()
-    return redirect('edit_vault', vault_id=vault_id)
+    return redirect('vault')
   else:
-    return redirect('edit_vault', vault_id=vault_id)
+    return redirect('vault')
