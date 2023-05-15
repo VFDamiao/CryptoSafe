@@ -52,3 +52,9 @@ def update_vault(request, vault_id):
     return redirect('vault')
   else:
     return redirect('vault')
+  
+@login_required
+def my_profile(request):
+  user = request.user.id
+
+  return render(request, 'vault/my_profile.html', {'user': user})
