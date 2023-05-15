@@ -6,26 +6,34 @@
 {% block content %}
 <link href="{% static 'styles/vault.css' %}" rel="stylesheet" />
 
-    <div class="text-center vault-container">
-        <div class=" vault-options">
-            <a class="btn" href="">Todos</a>
-            <a class="btn" href="">Favirotos</a>
-            <a class="btn" data-bs-toggle="modal" data-bs-target="#newVaultModal">Novo</a>
+    <section id="hero" class="hero d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <div class="text-center vault-container ">
+                    <div class=" vault-options">
+                        <a class="btn" href="">Todos</a>
+                        <a class="btn" href="">Favirotos</a>
+                        <a class="btn" data-bs-toggle="modal" data-bs-target="#newVaultModal">Novo</a>
+                    </div>
+            
+                    <ul class="list-group list-group-flush">
+                        {% for vault in vaults %}
+                        <li class="list-group-item list-group-item-action">
+                            {{ vault.name }}
+                            <i style="float: right;" class="bi bi-three-dots-vertical" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editVaultModal">Editar <i class="bi bi-pencil-square text-primary"></i></a></li>
+                                <li><a class="dropdown-item" href="{% url 'delete_vault' vault.id %}">Excluir <i class="bi bi-trash text-danger"></i></a></li>
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+          </div>
         </div>
-
-        <ul class="list-group list-group-flush">
-            {% for vault in vaults %}
-            <li class="list-group-item list-group-item-action">
-                {{ vault.name }}
-                <i style="float: right;" class="bi bi-three-dots-vertical" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editVaultModal">Editar <i class="bi bi-pencil-square text-primary"></i></a></li>
-                    <li><a class="dropdown-item" href="{% url 'delete_vault' vault.id %}">Excluir <i class="bi bi-trash text-danger"></i></a></li>
-                </ul>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+    </section><!-- End Hero -->
 
     <!-- vault creation modal -->
 
@@ -43,10 +51,6 @@
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Nome:</label>
                         <input type="text" name="name" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descrição:</label>
-                        <textarea class="form-control" name="description" id="message-text"></textarea>
                     </div>
                     </form>
                 </div>
@@ -74,10 +78,6 @@
                     <div class="mb-3">
                         <label for="recipient-name" class="col-form-label">Nome:</label>
                         <input type="text" name="name" value="{{ vault.name }}" class="form-control" id="recipient-name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message-text" class="col-form-label">Descrição:</label>
-                        <textarea class="form-control" name="description" id="message-text">{{ vault.description }}</textarea>
                     </div>
                     </form>
                 </div>

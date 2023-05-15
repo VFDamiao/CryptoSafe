@@ -18,10 +18,9 @@ def create_vault(request):
 
   if request.method == 'POST':
     name = request.POST.get('name')
-    description = request.POST.get('description')
     user_id = request.user.id
 
-    vault = Vault(name=name, description=description, user_id=user_id)
+    vault = Vault(name=name, user_id=user_id)
     vault.save()
     
     return redirect('vault')
@@ -47,7 +46,6 @@ def update_vault(request, vault_id):
 
   if request.method == 'POST':
     vault.name = request.POST.get('name')
-    vault.description = request.POST.get('description')
     vault.save()
     return redirect('vault')
   else:

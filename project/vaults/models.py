@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 class Vault(models.Model):
     name = models.CharField(max_length=150)
-    description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
