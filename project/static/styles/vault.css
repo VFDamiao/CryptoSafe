@@ -6,7 +6,13 @@
   border-radius: 5px;
 }
 
-.vault-container ul {
+.vault-container a {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.vault-container i {
   cursor: pointer;
 }
 
