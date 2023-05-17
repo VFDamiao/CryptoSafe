@@ -2,7 +2,27 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
+from cryptography.fernet import Fernet
+
 from .models import Vault, Credential
+
+key = b'PmIJ9VS5ikwe0YFCced8rqQzU0UBeKn4shkyxXL_PJU='
+
+fernet = Fernet(key)
+
+def encrypt(text):
+  encoded_text = text.encode()
+  encrypted_text = fernet.encrypt(encoded_text)
+
+  return encrypted_text.decode("utf-8")
+
+def decrypt(encrypted_text):
+  decoded_text = encrypted_text.encode("utf-8")
+  decrypted_text = fernet.decrypt(decoded_text)
+
+
+  return decrypted_text.decode()
+
 
 def home(request):
   return render(request, 'home/index.html')
@@ -58,13 +78,19 @@ def my_profile(request):
   return render(request, 'vault/my_profile.html', {'user': user})
 
 
+@login_required
 def credential(request, vault_id):
   credentials = Credential.objects.filter(vault_id=vault_id)
   vault = Vault.objects.get(id=vault_id)
-  user = request.user.id
+  user = request.user
+
+  for credential in credentials:
+    credential.password = decrypt(credential.password)
 
   return render(request, 'vault/credential.html', {'vault': vault, 'credentials': credentials, 'user':user})
 
+
+@login_required
 def create_credential(request, vault_id):
   if request.method == 'POST':
     name = request.POST.get('name')
@@ -74,13 +100,16 @@ def create_credential(request, vault_id):
     user = request.user.id
     vault = vault_id
 
-    credential = Credential(name=name, username=username, password=password, description=description, user_id=user, vault_id=vault)
+    encrypt_password = encrypt(password)
+
+    credential = Credential(name=name, username=username, password=encrypt_password, description=description, user_id=user, vault_id=vault)
     credential.save()
     
     return redirect('credential', vault_id)
   else:
     return redirect('credential', vault_id)
   
+@login_required
 def delete_credential(resquest, credential_id):
   credential = Credential.objects.get(id=credential_id)
   vault_id = credential.vault_id
@@ -88,6 +117,7 @@ def delete_credential(resquest, credential_id):
 
   return redirect('credential', vault_id)
 
+@login_required
 def update_credential(request, credential_id):
   credential = get_object_or_404(Credential, id=credential_id)
 
@@ -96,6 +126,9 @@ def update_credential(request, credential_id):
     credential.username = request.POST.get('username')
     credential.password = request.POST.get('password')
     credential.description = request.POST.get('description')
+
+    credential.password = encrypt(credential.password)
+
     credential.save()
     return redirect('credential', credential.vault_id)
   else:
