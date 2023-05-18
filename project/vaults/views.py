@@ -29,9 +29,12 @@ def home(request):
 
 @login_required
 def vault(request):
-  user = request.user.id
-  vaults = Vault.objects.filter(user_id=user)
-  return render(request, 'vault/index.html', {'vaults': vaults})
+  user_id = request.user.id
+  vaults = Vault.objects.filter(user_id=user_id)
+
+  user = request.user
+
+  return render(request, 'vault/index.html', {'vaults': vaults, 'user': user})
 
 @login_required
 def create_vault(request):
